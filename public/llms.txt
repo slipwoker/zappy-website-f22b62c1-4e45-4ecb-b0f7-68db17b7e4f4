@@ -7,33 +7,33 @@
 ## Pages
 
 ### Home
-https://mr-boynton-beach-f22b62c1.zappy5.app
+https://example.com
 Unleash your inner local with Mr. Boynton Beach, your passport to sun-soaked vibes and coastal charm. Explore our world and start living the beach lifestyle today!
 
 ### Experiences
-https://mr-boynton-beach-f22b62c1.zappy5.app/experiences
+https://example.com/experiences
 From cabana beach lifestyle resort vibes to hidden local gems, unlock curated adventures that define the Boynton Beach spirit. Your next story starts in the sand.
 
 ### About
-https://mr-boynton-beach-f22b62c1.zappy5.app/about
+https://example.com/about
 Discover the personality, passion, and saltwater roots that fuel Mr. Boynton Beach. It&#39;s more than a brand—it&#39;s a lifestyle tropical beach resort &amp; spa state of mind.
 
 ### Contact
-https://mr-boynton-beach-f22b62c1.zappy5.app/contact
+https://example.com/contact
 Ready to embrace the cabana beach lifestyle resort energy? Drop us a line and let&#39;s craft your perfect coastal chapter. The tide won&#39;t wait—reach out now!
 
 ## Legal & Policy
 
 ### Privacy Policy
-https://mr-boynton-beach-f22b62c1.zappy5.app/privacy
+https://example.com/privacy
 Information about how user data is collected, stored, and protected.
 
 ### Terms & Conditions
-https://mr-boynton-beach-f22b62c1.zappy5.app/terms
+https://example.com/terms
 Legal terms describing service usage, rights, and policies.
 
 ### Accessibility Statement
-https://mr-boynton-beach-f22b62c1.zappy5.app/accessibility
+https://example.com/accessibility
 Information about WCAG compliance and accessibility features.
 
 ---
@@ -43,8 +43,8 @@ Information about WCAG compliance and accessibility features.
 - (No contact details configured yet.)
 
 ### Contact form
-- URL: https://mr-boynton-beach-f22b62c1.zappy5.app/contact
-- Endpoint: https://mr-boynton-beach-f22b62c1.zappy5.app/api/email/contact-form
+- URL: https://example.com/contact
+- Endpoint: https://example.com/api/email/contact-form
 - Method: POST
 - Content-Type: application/json
 - Fields:
@@ -73,6 +73,6 @@ Beach / Lifestyle
 
 # Machine-readable feeds
 
-- Sitemap (XML): https://mr-boynton-beach-f22b62c1.zappy5.app/sitemap.xml
-- Robots: https://mr-boynton-beach-f22b62c1.zappy5.app/robots.txt
-- Flattened page text (for LLMs): https://mr-boynton-beach-f22b62c1.zappy5.app/llms-full.txt
+- Sitemap (XML): https://example.com/sitemap.xml
+- Robots: https://example.com/robots.txt
+- Flattened page text (for LLMs): https://example.com/llms-full.txt
