@@ -40,7 +40,10 @@ Information about WCAG compliance and accessibility features.
 
 ## How to Contact Us
 
-- (No contact details configured yet.)
+- Email: mrboyntonbeach@gmail.com
+- Phone: 15614458719
+- Phone (tel): tel:15614458719
+- Address: 7555 Sierra Drive E, Boca Raton, Florida, 33433, US
 
 ### Contact form
 - URL: https://example.com/contact
