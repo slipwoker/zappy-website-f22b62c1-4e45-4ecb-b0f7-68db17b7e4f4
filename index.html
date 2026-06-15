@@ -161,26 +161,31 @@
       // Track button clicks (counted as actions)
       if (target.tagName === 'BUTTON' || target.closest('button')) {
         var button = target.tagName === 'BUTTON' ? target : target.closest('button');
-        trackEvent('click', {
+        var clickMeta = {
           element: 'button',
           text: button.textContent.trim().substring(0, 100),
           id: button.id || null,
           class: button.className || null
-        });
+        };
+        
+        trackEvent('click', clickMeta);
       }
       
       // Track link clicks (navigation - not counted as actions)
       else if (target.tagName === 'A' || target.closest('a')) {
         var link = target.tagName === 'A' ? target : target.closest('a');
-        trackEvent('navigation', {
+        var navMeta = {
           element: 'link',
           text: link.textContent.trim().substring(0, 100),
           href: link.href,
           external: link.hostname !== window.location.hostname
-        });
+        };
+        
+        trackEvent('navigation', navMeta);
       }
     }, true);
   }
+  
   
   // Track form submissions
   if (config.trackFormSubmissions) {
@@ -938,7 +943,7 @@
       </article>
       <article class="home-features-section__card" data-grid-item-index="2">
         <figure class="home-features-section__card-media">
-          <div data-zappy-zoom-wrapper="true" data-element-id="img-1780951969478-oame7bsg0" data-element-type="image" data-zappy-zoom-wrapper-width="377px" data-zappy-zoom-wrapper-height="251px" data-zappy-zoom-wrapper-width-mode="px" data-zappy-zoom-wrapper-align="center" style="position: relative !important; overflow: hidden !important; width: 377px !important; max-width: 100% !important; margin-left: auto !important; margin-right: auto !important; height: 251px !important; display: block !important;" data-zappy-zoom-clip="true" data-zappy-wrapper-margins-applied="true" data-zappy-card-slot-fill="1"><img decoding="async" data-placeholder="home-features-image-3" data-context="A vibrant street scene along Ocean Avenue in downtown Boynton Beach, with outdoor cafe seating, palm trees, and locals walking, golden hour light, lifestyle editorial style" width="600" height="400" src="/assets/site-home-features-image-3-1781015867214-r7ia1c.webp?v=1781015871515" alt="Vibrant street scene along Ocean Avenue in downtown Boynton Beach" data-element-type="image" data-element-id="img-1780951969478-oame7bsg0" style="object-position: 50% 33% !important; margin: 0px !important; left: 0% !important; top: 0% !important; width: 100% !important; height: 100% !important; max-width: none !important; max-height: none !important; display: block !important; object-fit: cover !important;" data-zappy-zoom="1" data-zappy-original-width="377.07501220703125" data-zappy-original-height="251.375" data-zappy-object-position="50% 33%"></div>
+          <div data-zappy-zoom-wrapper="true" data-element-id="img-1780951969478-oame7bsg0" data-element-type="image" data-zappy-zoom-wrapper-width="377px" data-zappy-zoom-wrapper-height="251px" data-zappy-zoom-wrapper-width-mode="px" data-zappy-zoom-wrapper-align="center" style="position: relative !important; overflow: hidden !important; width: 377px !important; max-width: 100% !important; margin-left: auto !important; margin-right: auto !important; height: 251px !important; display: block !important;" data-zappy-zoom-clip="true" data-zappy-wrapper-margins-applied="true" data-zappy-card-slot-fill="1"><img decoding="async" data-placeholder="home-features-image-3" data-context="A vibrant street scene along Ocean Avenue in downtown Boynton Beach, with outdoor cafe seating, palm trees, and locals walking, golden hour light, lifestyle editorial style" width="600" height="400" src="/assets/image-1781532233423-4s20z9.webp?v=1781532235745" alt="Vibrant street scene along Ocean Avenue in downtown Boynton Beach" data-element-type="image" data-element-id="img-1780951969478-oame7bsg0" style="object-position: 50% 50% !important; display: block; object-fit: cover !important; margin: 0px !important; left: 0% !important; top: 0% !important; width: 100% !important; height: 100% !important; max-width: none !important; max-height: none !important; position: absolute !important;" data-zappy-zoom="1" data-zappy-original-width="377.07501220703125" data-zappy-original-height="251.375" data-zappy-object-position="50% 50%"></div>
         </figure>
         <div class="home-features-section__card-body">
           <h3 class="home-features-section__card-title" >Charlie Eelman&nbsp;
