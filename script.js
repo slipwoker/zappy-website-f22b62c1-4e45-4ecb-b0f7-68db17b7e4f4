@@ -2119,6 +2119,67 @@ window.onload = function() {
 /* END ZAPPY_PUBLISHED_ZOOM_WRAPPER_RUNTIME */
 
 
+/* ZAPPY_PUBLISHED_MOBILE_IMAGE_SWAP_V2 */
+(function(){
+  try {
+    if (window.__zappyMobileImageSwapInitV2) return;
+    window.__zappyMobileImageSwapInitV2 = true;
+    var SEL = 'img[data-zappy-mobile-src],img[data-zappy-mobile-object-position],img[data-zappy-mobile-zoom]';
+    var applied = false;
+    function standalone(img){ return img && !img.closest('[data-zappy-zoom-wrapper="true"]'); }
+    function applyMobile(){
+      if (applied) return; applied = true;
+      document.querySelectorAll(SEL).forEach(function(img){
+        if (!standalone(img)) return;
+        if (!img._zappyDesktop) img._zappyDesktop = { src: img.getAttribute('src'), style: img.getAttribute('style') };
+        var mSrc = img.getAttribute('data-zappy-mobile-src');
+        var mPos = img.getAttribute('data-zappy-mobile-object-position');
+        var mZoom = parseFloat(img.getAttribute('data-zappy-mobile-zoom'));
+        if (mSrc) img.src = mSrc;
+        if (mPos) img.style.setProperty('object-position', mPos, 'important');
+        if (isFinite(mZoom) && mZoom > 1) {
+          img.style.setProperty('transform', 'scale(' + mZoom + ')', 'important');
+          img.style.setProperty('transform-origin', mPos || '50% 50%', 'important');
+          var p = img.parentElement;
+          if (p) {
+            if (!p._zappyDesktop) p._zappyDesktop = { style: p.getAttribute('style') };
+            p.style.setProperty('overflow', 'hidden', 'important');
+          }
+        }
+      });
+    }
+    function revertDesktop(){
+      if (!applied) return; applied = false;
+      document.querySelectorAll(SEL).forEach(function(img){
+        if (!standalone(img)) return;
+        if (img._zappyDesktop) {
+          if (img._zappyDesktop.src != null) img.setAttribute('src', img._zappyDesktop.src);
+          if (img._zappyDesktop.style != null) img.setAttribute('style', img._zappyDesktop.style);
+          else img.removeAttribute('style');
+        }
+        var p = img.parentElement;
+        if (p && p._zappyDesktop) {
+          if (p._zappyDesktop.style != null) p.setAttribute('style', p._zappyDesktop.style);
+          else p.removeAttribute('style');
+        }
+      });
+    }
+    function init(){
+      var mq = window.matchMedia('(max-width:768px)');
+      function onChange(e){ if (e.matches) applyMobile(); else revertDesktop(); }
+      if (mq.matches) applyMobile();
+      try { mq.addEventListener('change', onChange); } catch (e) { mq.addListener(onChange); }
+    }
+    // script.js loads at end of <body>, so the <img> elements already exist —
+    // run immediately to minimise the desktop-image flash, with a
+    // DOMContentLoaded fallback for the head-loaded edge case.
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
+    else init();
+  } catch (eOuter) {}
+})();
+/* END ZAPPY_PUBLISHED_MOBILE_IMAGE_SWAP_V2 */
+
+
 /* ZAPPY_MOBILE_MENU_TOGGLE */
 (function(){
   try {
@@ -2284,6 +2345,94 @@ window.onload = function() {
         question.__zappyFaqBound = true;
         question.style.cursor = 'pointer';
 
+        // Shared answer expand/collapse animation (used by both the <details>
+        // toggle path and the generic click path) so the two stay identical.
+        function expandFaqAnswer(answer) {
+          if (!answer) return;
+          answer.style.display = '';
+          answer.style.paddingTop = '';
+          answer.style.paddingBottom = '';
+          var inners = answer.querySelectorAll(answerSel);
+          inners.forEach(function(inn) {
+            inn.style.maxHeight = '';
+            inn.style.overflow = '';
+            inn.style.opacity = '';
+            inn.style.paddingTop = '';
+            inn.style.paddingBottom = '';
+          });
+          answer.style.transition = 'none';
+          answer.style.maxHeight = 'none';
+          answer.style.opacity = '0';
+          var realH = answer.scrollHeight;
+          answer.style.maxHeight = '0';
+          answer.offsetHeight;
+          answer.style.transition = 'max-height 0.35s ease, opacity 0.25s ease, padding 0.25s ease';
+          answer.style.maxHeight = realH + 'px';
+          answer.style.overflow = 'hidden';
+          answer.style.opacity = '1';
+        }
+        function collapseFaqAnswer(answer) {
+          if (!answer) return;
+          answer.style.transition = 'max-height 0.35s ease, opacity 0.25s ease, padding 0.25s ease';
+          answer.style.maxHeight = '0';
+          answer.style.overflow = 'hidden';
+          answer.style.opacity = '0';
+          answer.style.paddingTop = '0';
+          answer.style.paddingBottom = '0';
+        }
+
+        // Native <details>/<summary> accordions: the browser hides the answer
+        // whenever the <details> lacks the `open` attribute, so animating
+        // max-height alone is NOT enough — and a click handler that
+        // preventDefault()s the summary blocks the native open toggle, leaving
+        // the answer permanently clamped (max-height:0 inside a closed details).
+        // Drive the animation off the native `toggle` event instead — it fires
+        // no matter WHERE inside the summary the user clicks (text, icon,
+        // padding) — and let the browser own the `open` state. This is the
+        // modern FAQ markup the legacy click+preventDefault path never handled.
+        var detailsEl = (item.tagName === 'DETAILS')
+          ? item
+          : (question.closest ? question.closest('details') : null);
+        if (detailsEl) {
+          if (detailsEl.__zappyFaqToggleBound) return;
+          detailsEl.__zappyFaqToggleBound = true;
+          detailsEl.addEventListener('toggle', function() {
+            var isActive = detailsEl.open;
+            item.classList.toggle('active', isActive);
+            question.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+            if (isActive) {
+              // Single-open accordion: close the OTHER open <details> in this
+              // FAQ list. Match by the SAME faq-item selector (NOT
+              // `details[class*="faq-item"]`) and resolve each item's
+              // <details>, because the faq-item / accordion-item class
+              // frequently lives on a WRAPPER (e.g.
+              // `<div class="faq-item"><details>…</details></div>`) rather
+              // than on the <details> itself — querying for class-bearing
+              // <details> would miss those siblings and let multiple answers
+              // stay open.
+              var parent = item.parentElement;
+              if (parent) {
+                var sibItems = parent.querySelectorAll('[class*="faq-item"], .accordion-item');
+                sibItems.forEach(function(sibItem) {
+                  if (sibItem === item) return;
+                  var sibDetails = (sibItem.tagName === 'DETAILS') ? sibItem : sibItem.querySelector('details');
+                  if (sibDetails && sibDetails !== detailsEl && sibDetails.open) sibDetails.open = false;
+                });
+              }
+              expandFaqAnswer(pickAnswer(item, question));
+            } else {
+              collapseFaqAnswer(pickAnswer(item, question));
+            }
+            var chevron = question.querySelector('[class*="chevron"], [class*="icon"], svg');
+            if (chevron) {
+              chevron.style.transform = isActive ? 'rotate(180deg)' : 'rotate(0deg)';
+              chevron.style.transition = 'transform 0.3s ease';
+            }
+          });
+          if (detailsEl.open) { item.classList.add('active'); expandFaqAnswer(pickAnswer(item, question)); }
+          return;
+        }
+
         question.addEventListener('click', function(e) {
           e.preventDefault();
           e.stopPropagation();
@@ -2355,6 +2504,9 @@ window.onload = function() {
 
       items.forEach(function(item) {
         if (item.classList.contains('active')) return;
+        // Native <details> manage their own open/closed visibility; never clamp
+        // an open one to max-height:0 (its toggle handler already expanded it).
+        if (item.tagName === 'DETAILS' && item.open) return;
         if (item.closest(answerSel)) return;
         var question = item.querySelector('[class*="faq-question"], [class*="faq-header"], [class*="faq-item__question"], [class*="faq-item__btn"], [class*="faq-btn"], .accordion-header, .accordion-toggle');
         // No clickable question/header toggle exists → this is a STATIC FAQ
@@ -2489,6 +2641,25 @@ function resolveVar(val){
   return getComputedStyle(document.documentElement).getPropertyValue('--'+m[1]).trim()||val;
 }
 
+// An explicit inline `color:` on the element itself means the colour is
+// intentional and must not be auto-"fixed" (handled in the loop). The SAME
+// intent applies when an ANCESTOR set an explicit inline colour and this element
+// merely inherits it (e.g. a panel whose <h3 style="color:#fff"> wraps a <span>
+// that inherits white). Without this, removing a child's own colour to let it
+// inherit would make the child eligible for the fixer, which on a mid-tone
+// background can compute black > white contrast and flip intentional white text
+// to black with !important (the "white flash then black" bug). Respecting the
+// ancestor's explicit colour keeps the fixer for genuinely un-styled text only.
+function ancestorHasExplicitColor(el){
+  var n=el&&el.parentElement;
+  while(n&&n!==document.body){
+    var st=n.getAttribute&&n.getAttribute('style');
+    if(st&&/(?:^|;)\s*color\s*:/i.test(st))return true;
+    n=n.parentElement;
+  }
+  return false;
+}
+
 function isDecorativeAccentText(el){
   if(!el||!el.matches)return false;
   if(el.matches('.font-accent,.hero-logotype,.hero-logotype-line,[class*="script"],[class*="accent-line"],[class*="subheadline"]'))return true;
@@ -2516,16 +2687,50 @@ function fixContrast(){
   if(!darkRGB)darkRGB={r:26,g:26,b:26};
   if(!lightRGB)lightRGB={r:255,g:255,b:255};
 
+  var TEXT_SEL='h1,h2,h3,h4,h5,h6,p,span,a,button,li,label,td,th,dt,dd,figcaption';
   var mainEl=document.querySelector('main')||document.body;
-  var els=mainEl.querySelectorAll('h1,h2,h3,h4,h5,h6,p,span,a,button,li,label,td,th,dt,dd,figcaption');
+  var els=[];
+  var mainNodes=mainEl.querySelectorAll(TEXT_SEL);
+  for(var mi=0;mi<mainNodes.length;mi++)els.push(mainNodes[mi]);
+  // The page footer (e.g. <footer class="site-footer">) usually lives OUTSIDE
+  // <main>, so it would never be scanned otherwise. Pull in any footer not
+  // already covered by mainEl so its (often muted-on-dark) text is fixed too.
+  var extraFooters=document.querySelectorAll('footer,.site-footer,.zappy-footer');
+  for(var fi=0;fi<extraFooters.length;fi++){
+    var ft=extraFooters[fi];
+    if(mainEl.contains(ft))continue;
+    var fNodes=ft.querySelectorAll(TEXT_SEL);
+    for(var fj=0;fj<fNodes.length;fj++)els.push(fNodes[fj]);
+  }
+  // The navbar CTA pill (.nav-cta-btn / .cta-button) is a SOLID-FILL button, so
+  // unlike plain nav links (which are transparent over the managed navbar bg and
+  // are intentionally skipped below) its text contrast is well-defined against
+  // its own fill. It lives OUTSIDE <main>, so add it + its text nodes explicitly.
+  var ctaPills=document.querySelectorAll('.nav-cta-btn,.cta-button');
+  for(var ci=0;ci<ctaPills.length;ci++){
+    var cp=ctaPills[ci];
+    if(mainEl.contains(cp))continue;
+    els.push(cp);
+    var cpNodes=cp.querySelectorAll(TEXT_SEL);
+    for(var cj=0;cj<cpNodes.length;cj++)els.push(cpNodes[cj]);
+  }
   var fixed=0;
   for(var i=0;i<els.length;i++){
     var el=els[i];
-    if(el.closest('nav,header,.zappy-header,footer,.zappy-footer'))continue;
+    // Skip the navbar/header only — those are managed by the navbar contrast
+    // helpers. Footers are NOT skipped: the page footer (e.g. .site-footer) is
+    // often a dark band with muted/grey text, AND the LLM frequently uses a
+    // semantic <footer> for citation/role text INSIDE testimonial/blockquote
+    // cards — both need the same computed-background contrast fix as body text.
+    // The navbar CTA pill is the ONE nav element we DO fix: it's a solid-fill
+    // button whose text/bg contrast is self-contained (the AI sometimes paints
+    // the label the same hue as the fill → invisible until hover).
+    if(el.closest('nav,header,.zappy-header')&&!el.closest('.nav-cta-btn,.cta-button'))continue;
     if(isDecorativeAccentText(el))continue;
     if(hasImageOrVideoBackground(el))continue;
     var inlineStyle=el.getAttribute('style')||'';
     if(/(?:^|;\s*)color\s*:/i.test(inlineStyle))continue;
+    if(ancestorHasExplicitColor(el))continue;
     if(el.tagName==='FONT'&&el.hasAttribute('color'))continue;
     var txt=el.textContent?el.textContent.trim():'';
     if(!txt)continue;
@@ -2819,6 +3024,14 @@ function fixContrast(){
             }
             container.removeAttribute('data-zappy-grid-centered');
           }
+
+          // List grids (<ul>/<ol>) read in document order and align to the start
+          // (first column); centering a checklist's lonely last item breaks its
+          // column alignment with the rows above. Cards (div grids) still center.
+          // The cleanup above already reverted any prior centering, so a list
+          // centered before this runtime shipped snaps back to its natural spot.
+          var containerTag = (container.tagName || '').toLowerCase();
+          if (containerTag === 'ul' || containerTag === 'ol') continue;
 
           var items = [];
           for (var c = 0; c < container.children.length; c++) {
