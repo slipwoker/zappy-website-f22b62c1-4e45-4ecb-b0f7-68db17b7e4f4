@@ -179,16 +179,6 @@ some of my top local mortgage brokers that I trust .
 
 
 
-Link text
-
-
-
-### Subheading
-
-
-
-
-
 
 
 
@@ -237,6 +227,18 @@ As a dedicated Mortgage Advisor, I passionately believe in my mission: "Deliver 
 
 
 Lily Kondo NMLS 339408 Loan Counselor at New American Funding NMLS #6606   Lily also speaks Spanish
+
+
+
+
+
+
+
+
+### Subheading
+
+
+Text goes here
 
 
 
