@@ -6187,6 +6187,17 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
 .home-hero-section .hero-video-background {
   display: none !important;
 }
+
+.home-hero-section .home-hero-section__bg-wrapper {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+/* zappy-self-heal */
+.home-hero-section .home-hero-section__bg-wrapper { width: 100% !important; }
+
+/* zappy-self-heal */
+html body .home-hero-section .home-hero-section__bg-wrapper { width: 100% !important; }
+
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
