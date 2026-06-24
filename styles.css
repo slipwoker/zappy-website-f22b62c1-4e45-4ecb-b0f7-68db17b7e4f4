@@ -6198,6 +6198,17 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
 /* zappy-self-heal */
 html body .home-hero-section .home-hero-section__bg-wrapper { width: 100% !important; }
 
+
+#home-hero-section .home-hero-section__bg-wrapper {
+  max-width: none !important;
+  width: 100% !important;
+}
+/* zappy-self-heal */
+#home-hero-section .home-hero-section__bg-wrapper { width: 100% !important; }
+
+/* zappy-self-heal */
+html body #home-hero-section .home-hero-section__bg-wrapper { width: 100% !important; }
+
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
