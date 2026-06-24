@@ -263,10 +263,6 @@ Text goes here
 
 
 
-
-
-
-
 ### Card Title 1
 
 
