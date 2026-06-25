@@ -258,6 +258,293 @@
     <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
     <!-- Mickidum Accessibility Toolbar -->
     <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+
+<style data-zappy-section-v2-css="true">
+/* V2 Regenerated Section CSS */
+.home-hero-section {
+  position: relative;
+  background-color: #0D0D0D;
+  background-image: 
+    radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.08) 0%, transparent 60%),
+    linear-gradient(180deg, #0D0D0D 0%, #111111 100%);
+  color: var(--text-light);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 120px 16px 80px;
+  text-align: center;
+}
+
+/* Decorative Palm Motif */
+.home-hero-section .hero-palm-accent {
+  position: absolute;
+  top: 80px;
+  right: -20px;
+  width: 200px;
+  height: 300px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.home-hero-section .hero-palm-accent svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Main Content Container */
+.home-hero-section .hero-content-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+/* Video Embed Wrapper */
+.home-hero-section .hero-video-wrapper {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.home-hero-section .hero-video-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 80px rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.2);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-hero-section .hero-video-embed:hover {
+  transform: scale(1.01);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 120px rgba(201,168,76,0.25);
+  border-color: rgba(201,168,76,0.4);
+}
+
+.home-hero-section .hero-video-embed img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home-hero-section .video-play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.6));
+  transition: transform 0.3s ease;
+}
+
+.home-hero-section .hero-video-embed:hover .video-play-overlay {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Text Block */
+.home-hero-section .hero-text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 700px;
+  width: 100%;
+}
+
+.home-hero-section .hero-identity-line {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+
+.home-hero-section .hero-headline {font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin: 0;}
+
+.home-hero-section .hero-subtitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+
+.home-hero-section .hero-description {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #CCCCCC;
+  margin: 0;
+  max-width: 600px;
+}
+
+/* CTA Group */
+.home-hero-section .hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.home-hero-section .btn-pill {
+  border-radius: 50px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #C9A84C 0%, #F5C842 100%);
+  color: #0D0D0D;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 32px rgba(201,168,76,0.35);
+}
+
+.home-hero-section .btn-pill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(201,168,76,0.5);
+}
+
+.home-hero-section .btn-ghost {
+  background: transparent;
+  color: var(--text-light);
+  border: 2px solid rgba(201,168,76,0.4);
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(4px);
+}
+
+.home-hero-section .btn-ghost:hover {
+  background: rgba(201,168,76,0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(201,168,76,0.2);
+}
+
+/* Bottom Gradient Scrim */
+.home-hero-section .hero-bottom-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(to top, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.3) 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .home-hero-section {
+    padding: 100px 16px 60px;
+    min-height: auto;
+  }
+
+  .home-hero-section .hero-content-container {
+    gap: 32px;
+  }
+
+  .home-hero-section .hero-video-wrapper {
+    max-width: 100%;
+  }
+
+  .home-hero-section .hero-video-embed {
+    border-radius: 12px;
+  }
+
+  .home-hero-section .hero-headline {
+    font-size: 2.2rem;
+    line-height: 1.2;
+  }
+
+  .home-hero-section .hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .home-hero-section .hero-description {
+    font-size: 0.9rem;
+  }
+
+  .home-hero-section .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .home-hero-section .btn-pill,
+  .home-hero-section .btn-ghost {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .home-hero-section .hero-palm-accent {
+    top: 40px;
+    right: -60px;
+    width: 160px;
+    height: 240px;
+    opacity: 0.4;
+  }
+}
+
+@media (min-width: 769px) {
+  .home-hero-section .hero-headline {
+    font-size: 4.5rem;
+    line-height: 0.95;
+  }
+}
+/* ZAPPY_POSTGEN_GUARD_HERO_FONT_CAP:home-hero */
+.hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 48px !important; line-height: 1.2 !important; }
+@media (max-width: 1024px) {
+  .hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 36px !important; }
+}
+@media (max-width: 768px) {
+  .hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 28px !important; }
+}
+
+/* ZAPPY_POSTGEN_GUARD_HERO_TYPO:Home-hero (home-hero) — stripped 1 jarring hero headline effect(s) */
+
+</style>
     <link rel="stylesheet" href="/styles.css">
     <script>window.ZAPPY_WEBSITE_ID = "f22b62c1-4e45-4ecb-b0f7-68db17b7e4f4"; window.ZAPPY_API_BASE = "https://api.zappy5.com";</script>
 
@@ -815,58 +1102,47 @@
 </script>
   
   <main id="main">
-    <section data-band-index="0" class="home-hero-section" data-layout-spec="Home-hero" data-hero-type="fullscreen-scrim" id="home-hero-section" style="position: relative; overflow: hidden; min-height: 1042.29px !important;" data-zappy-content-align="center-center">
-<div class="hero-video-background zappy-editable-video-bg" id="hero-video-bg-1782311765985" data-original-image-src="/assets/site-home-hero-image-1-1780955815240-66uqnn.webp?v=1780955817602" style="outline: rgb(255, 0, 131) solid 3px; outline-offset: -3px; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0">
-  <div class="hero-video-overlay" style="transition: background 0.3s; background: linear-gradient(rgba(255, 0, 131, 0.2), rgba(255, 0, 131, 0.3));"></div>
-  <iframe class="hero-video-iframe" src="https://www.youtube.com/embed/i6_5mRdlJbQ?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=i6_5mRdlJbQ&amp;controls=0&amp;showinfo=0&amp;modestbranding=1&amp;rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" loading="lazy"></iframe>
-  <div data-zappy-zoom-wrapper="true" data-element-id="img-1782311765978-95tx3oxhw" data-element-type="image" data-zappy-zoom-wrapper-width="1080px" data-zappy-zoom-wrapper-height="1070px" data-zappy-zoom-wrapper-width-mode="full" data-zappy-zoom-wrapper-align="center" style="position: absolute !important; overflow: hidden !important; width: 100% !important; max-width: none !important; margin-left: 0px !important; margin-right: 0px !important; height: 100% !important; display: block !important; top: 0px !important; left: 0px !important; z-index: 1 !important;" data-zappy-zoom-clip="true" data-zappy-wrapper-margins-applied="true"><img class="hero-video-fallback" src="/assets/site-home-hero-image-1-1780955815240-66uqnn.webp?v=1780955817602" alt="Hero background" loading="lazy" data-element-type="image" data-element-id="img-1782311765978-95tx3oxhw" style="object-fit: cover !important; object-position: 50% 35% !important; width: 100% !important; max-width: none !important; max-height: none !important; height: 100% !important; margin: 0px !important; position: absolute !important; left: 0% !important; top: 0% !important; display: block !important;" data-zappy-zoom="1" data-zappy-object-position="50% 35%"></div>
-</div>
-  <!-- Background Image Layer -->
-  <div class="home-hero-section__bg-wrapper">
-    <div data-zappy-zoom-wrapper="true" data-element-id="img-1780949867097-x5ikxu5ib" data-element-type="image" data-zappy-zoom-wrapper-width-mode="full" style="top: 0px !important; left: 0px !important; width: 100% !important; height: 100% !important; position: absolute !important; max-width: none !important; margin-left: 0px !important; margin-right: 0px !important; z-index: 1 !important; overflow: hidden !important;" data-zappy-zoom-clip="true" data-zappy-wrapper-margins-applied="true" data-zappy-zoom-wrapper-width="1477px" data-zappy-zoom-wrapper-height="734px" data-zappy-zoom-wrapper-align="center"><img fetchpriority="high" data-hero-bg="true" data-placeholder="home-hero-image-1" data-context="Luminous coastal sunset over Boynton Beach Florida with soft golden light reflecting on gentle waves, wide shoreline, and pastel sky with scattered palm silhouettes, cinematic luxury beach photography" width="1200" height="600" src="/assets/site-home-hero-image-1-1780955815240-66uqnn.webp?v=1780955817602" alt="Scenic Boynton Beach sunset with golden light and calm ocean waves" class="home-hero-section__bg-image hero-original-image-hidden" data-hero-background="true" data-element-type="image" data-element-id="img-1780949867097-x5ikxu5ib" style="object-position: 50% 33% !important; width: 100% !important; height: 100% !important; object-fit: cover !important; position: absolute !important; margin: 0px !important; left: 0% !important; top: 0% !important; max-width: none !important; max-height: none !important; display: block !important;" data-zappy-zoom="1" data-zappy-original-width="1476.800048828125" data-zappy-original-height="733.6000366210938" data-zappy-object-position="50% 33%"></div>
-  </div>
-
-  <!-- Scrim Overlay for Text Readability -->
-  <div class="home-hero-section__scrim" aria-hidden="true"></div>
-
-  <!-- Decorative Palm Motif (behind text, subtle) -->
-  <div class="home-hero-section__palm-accent" aria-hidden="true">
-    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <path d="M100,180 C100,180 40,120 60,70 C80,20 100,30 100,30 C100,30 120,20 140,70 C160,120 100,180 100,180 Z" fill="none" stroke="#C9A84C" stroke-width="2" opacity="0.15"></path>
-      <path d="M100,30 C100,30 130,10 150,40" fill="none" stroke="#C9A84C" stroke-width="2" opacity="0.15"></path>
-      <path d="M100,30 C100,30 70,10 50,40" fill="none" stroke="#C9A84C" stroke-width="2" opacity="0.15"></path>
+    <section class="home-hero-section" data-layout-spec="Home-hero" data-hero-type="side-by-side" id="home-hero-section">
+  <!-- Decorative Palm Motif -->
+  <div class="hero-palm-accent" aria-hidden="true">
+    <svg viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 290 L100 120 M100 120 C60 80 40 40 20 20 M100 120 C140 80 160 40 180 20 M100 140 C60 110 30 80 15 60 M100 140 C140 110 170 80 185 60 M100 160 C70 140 50 110 35 90 M100 160 C130 140 150 110 165 90" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" opacity="0.15"></path>
     </svg>
   </div>
 
-  <!-- Text & CTA Overlay Group -->
-  <div class="home-hero-section__content" data-zappy-align-target="true" ><h3 class="home-hero-section__identity-line">Your Local Guide &amp; Lifestyle Voice</h3>
-    <h1 class="home-hero-section__headline">Lyn Miller realtor palm Beach county</h1>
-    <p class="home-hero-section__description" >Family-friendly coastal moments, eco-aware discovery, and the relaxed energy of South Florida — curated by the personality that knows it best.</p>
-    <div class="home-hero-section__ctas" >
-      <a href="#experiences" class="home-hero-section__cta home-hero-section__cta--primary">
-        Explore Experiences
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-element-type="icon" data-element-id="icon-1782312218765-t0v0e0dr6" data-icon-type="svg" style="cursor: pointer;"><path d="M3 8H13M10 5L13 8L10 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-      </a>
-      <a href="#contact" class="home-hero-section__cta home-hero-section__cta--secondary" data-element-id="btn-1781015354901-a909hjny5">
-        Contact Mr Boynton Beach
-      </a>
-    </div>
+  <!-- Main Content Container -->
+  <div class="hero-content-container">
+    
+    <!-- Video Embed Placeholder (Centered, Rounded) -->
+    <div class="hero-video-wrapper">
+      <div class="hero-video-embed"><iframe src="https://www.youtube.com/embed/i6_5mRdlJbQ?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=i6_5mRdlJbQ&amp;controls=1&amp;showinfo=0&amp;modestbranding=1&amp;rel=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
     </div>
 
-  <!-- Bottom Divider Transition -->
-  <div class="home-hero-section__divider-wrapper" aria-hidden="true">
-    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="home-hero-divider-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.3"></stop>
-          <stop offset="50%" stop-color="#C9A84C" stop-opacity="0.6"></stop>
-          <stop offset="100%" stop-color="#C9A84C" stop-opacity="0.1"></stop>
-        </linearGradient>
-      </defs>
-      <path d="M0,80 L0,55 Q100,45 200,52 T400,48 Q500,55 600,45 T800,50 Q900,48 1000,52 T1200,48 L1200,80 Z" fill="var(--bg-dark)"></path>
-      <path d="M0,80 L0,65 Q100,55 200,60 T400,56 Q500,62 600,54 T800,58 Q900,55 1000,60 T1200,56 L1200,80 Z" fill="var(--bg-dark)" opacity="0.4"></path>
-    </svg>
+    <!-- Identity & Text Block -->
+    <div class="hero-text-block">
+      <p class="hero-identity-line">Your Local Guide &amp; Lifestyle Voice</p>
+      <h1 class="hero-headline">Lyn Miller realtor palm Beach county</h1>
+      <h3 class="hero-subtitle">A charismatic voice for coastal discovery</h3>
+      <p class="hero-description">Family-friendly coastal moments, eco-aware discovery, and the relaxed energy of South Florida — curated by the personality that knows it best.</p>
+      
+      <!-- CTA Buttons -->
+      <div class="hero-cta-group">
+        <a href="#experiences" class="btn-pill btn-primary">
+          Explore Experiences
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        <a href="#contact" class="btn-ghost btn-secondary-hero">
+          Get In Touch
+        </a>
+      </div>
+    </div>
+
   </div>
+
+  <!-- Bottom Scrim / Transition Overlay -->
+  <div class="hero-bottom-gradient" aria-hidden="true"></div>
 </section>
 
 <section data-band-index="1" class="home-intro-section" data-layout-spec="Home-intro" id="home-intro-section">
