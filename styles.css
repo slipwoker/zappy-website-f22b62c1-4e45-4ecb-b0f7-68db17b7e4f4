@@ -2594,9 +2594,9 @@ html[dir="rtl"] .footer-contact li > a { flex-direction: row !important; }
   }
 
   .home-intro-section__container {
-    flex-direction: column-reverse;
-    gap: 48px;
-  }
+  flex-direction: column;
+  gap: 48px;
+}
 
   .home-intro-section__content {
     align-items: center;
