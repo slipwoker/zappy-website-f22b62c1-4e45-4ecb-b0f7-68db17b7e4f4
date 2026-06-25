@@ -6324,6 +6324,45 @@ html body .home-hero-section .home-hero-section__bg-wrapper { width: 100% !impor
 
 /* zappy-self-heal */
 html body #home-hero-section .home-hero-section__bg-wrapper { width: 100% !important; }
+
+.home-hero-section .hero-video-embed {
+  position: relative !important;
+  width: 100% !important;
+  height: 0 !important;
+  padding-bottom: 56.25% !important;
+  aspect-ratio: auto !important;
+}
+
+.home-hero-section .hero-video-embed iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+}
+/* zappy-self-heal */
+.home-hero-section .hero-video-embed { position: relative !important; }
+.home-hero-section .hero-video-embed { width: 100% !important; }
+.home-hero-section .hero-video-embed { height: 0 !important; }
+.home-hero-section .hero-video-embed { padding-bottom: 56.25% !important; }
+.home-hero-section .hero-video-embed iframe { top: 0 !important; }
+.home-hero-section .hero-video-embed iframe { left: 0 !important; }
+.home-hero-section .hero-video-embed iframe { width: 100% !important; }
+.home-hero-section .hero-video-embed iframe { height: 100% !important; }
+.home-hero-section .hero-video-embed iframe { border: none !important; }
+
+/* zappy-self-heal */
+html body .home-hero-section .hero-video-embed { position: relative !important; }
+html body .home-hero-section .hero-video-embed { width: 100% !important; }
+html body .home-hero-section .hero-video-embed { height: 0 !important; }
+html body .home-hero-section .hero-video-embed { padding-bottom: 56.25% !important; }
+html body .home-hero-section .hero-video-embed iframe { top: 0 !important; }
+html body .home-hero-section .hero-video-embed iframe { left: 0 !important; }
+html body .home-hero-section .hero-video-embed iframe { width: 100% !important; }
+html body .home-hero-section .hero-video-embed iframe { height: 100% !important; }
+html body .home-hero-section .hero-video-embed iframe { border: none !important; }
+
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
