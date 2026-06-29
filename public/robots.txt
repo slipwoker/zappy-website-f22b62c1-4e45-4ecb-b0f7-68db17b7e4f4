@@ -50,4 +50,4 @@ Allow: /
 User-agent: MistralAI-User
 Allow: /
 
-Sitemap: https://mr-boynton-beach.zappy5.app/sitemap.xml
+Sitemap: https://mrboyntonbeach.com/sitemap.xml
