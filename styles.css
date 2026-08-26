@@ -6211,6 +6211,27 @@ html body #home-hero-section .home-hero-section__bg-wrapper { width: 100% !impor
 }
 /* /Zappy custom logo size */
 
+
+#home-hero-section .home-hero-section__content .zappy-inserted-element[data-video-editable="true"] {
+  width: 100% !important;
+  max-width: 600px !important;
+  display: block !important;
+}
+
+#home-hero-section .home-hero-section__content .zappy-inserted-element[data-video-editable="true"] > div {
+  width: 100% !important;
+  position: relative !important;
+  height: 0 !important;
+  padding-bottom: 56.25% !important;
+}
+
+#home-hero-section .home-hero-section__content .zappy-inserted-element[data-video-editable="true"] iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
