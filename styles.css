@@ -6232,6 +6232,14 @@ html body #home-hero-section .home-hero-section__bg-wrapper { width: 100% !impor
   width: 100% !important;
   height: 100% !important;
 }
+
+#home-hero-section .home-hero-section__content .zappy-inserted-element[data-video-editable="true"] {
+  width: 100% !important;
+  max-width: 600px !important;
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
