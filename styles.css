@@ -6259,6 +6259,23 @@ html body #home-hero-section .home-hero-section__bg-wrapper { width: 100% !impor
   right: auto !important;
   transform: none !important;
 }
+
+.home-features-section__logo-area {
+  margin-top: auto;
+  padding-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-features-section__logo-area img {
+  max-width: 140px;
+  max-height: 56px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
